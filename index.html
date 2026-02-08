@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EgoPi Project</title>
-  <meta name="description" content="EgoPi project website. Intro + video." />
+  <title>GRaDNav Onboard Project (In Progress)</title>
+  <meta name="description" content="GRaDNav Onboard website (in progress)." />
 
   <!-- Serif font for project name -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,6 @@
       }
     }
 
-
     /* =========================
        Base Layout
        ========================= */
@@ -69,16 +68,11 @@
     /* =========================
        Project Name (Serif, NOT bold)
        ========================= */
-    .home-name { 
+    .home-name {
       font-family: "Cormorant Garamond", serif;
-      font-size: 2.9rem; 
-      line-height: 1.05; 
-      margin: 0 0 1rem 0; 
-    }
-
-    .subtitle {
-      color: var(--muted-text);
-      margin: 0;
+      font-size: 2.9rem;
+      line-height: 1.05;
+      margin: 0 0 1rem 0;
     }
 
     .meta {
@@ -107,56 +101,25 @@
       color: var(--accent-color);
     }
 
-    .intro {
-      margin: 0;
-      white-space: pre-line;
-    }
-
-    .hint {
-      color: var(--muted-text);
-      font-size: 12px;
-      margin-top: 10px;
-    }
-
     /* =========================
-       Framework figure
+       Typewriter
        ========================= */
-    .figure {
-      margin: 14px 0;
-      border: 1px solid var(--border-color);
-      background: transparent;
+    .typewrap {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
 
-    .figure img {
-      display: block;
-      width: 100%;
-      height: auto;
+    .cursor {
+      display: inline-block;
+      width: 0.6ch;
+      margin-left: 0.2ch;
+      border-bottom: 1px solid transparent;
+      animation: blink 1s steps(1, end) infinite;
     }
 
-    .figure-caption {
-      font-size: 12px;
-      color: var(--muted-text);
-      margin-top: 6px;
-    }
-
-    /* =========================
-       Video
-       ========================= */
-    .video {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      border: 1px solid var(--border-color);
-    }
-
-    iframe,
-    video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+    @keyframes blink {
+      50% { opacity: 0; }
     }
 
     /* =========================
@@ -174,92 +137,21 @@
       margin-bottom: 10px;
       color: var(--border-color);
     }
-
-    a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* underline only for resource links */
-    .code-link {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 2px;
-    }
-
-
-    @media (max-width: 640px) {
-      .home-name {
-        font-size: 2.2rem;
-      }
-    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <h1 class="home-name">Ego-Pi: VLA Fine-Tuning for Ego-Centric Human and Robot Data</h1>
-
-      <p class="meta">
-        Ji Woong (Brian) Kim*, <strong>Ke Wang*</strong>, Sirui Chen, Zipeng Fu, Cong Gao, Jeff Lai, Chelsea Finn (* Equal contribution)
-      </p>
-
-      <p>
-
-        <a class="code-link"
-           href=""
-           target="_blank"
-           rel="noopener noreferrer">
-          paper</a>
-        &nbsp;
-        <a class="code-link"
-           href=""
-           target="_blank"
-           rel="noopener noreferrer">
-          website</a>
-        &nbsp;
-        <a class="code-link"
-           href=""
-           target="_blank"
-           rel="noopener noreferrer">
-          code</a>
-      </p>
+      <h1 class="home-name">GRaD-Nav-Onboard: Learning Visual Drone Navigation for Dynamic Environments via Gaussian Radiance Fields</h1>
+      <p class="meta"><strong>Ke Wang</strong>, Qianzhong Chen, Mac Schwager</strong></p>
     </header>
 
-    <!-- INTRO -->
-    <section id="intro">
-      <h2>Intro</h2>
+    <section>
+      <h2>Status</h2>
 
-      <p class="intro"> Robotic manipulation is fundamentally limited by data scarcity. We leverage egocentric human data to improve learning for humanoid robots with dexterous hands, bridging the embodiment gap through visual guiding keypoints and a shared action representation. Our approach enables better generalization and the acquisition of new skills without additional robot data.</p>
-
-      <div class="figure">
-        <img src="assets/framework.png" alt="EgoPi framework">
-      </div>
-      <div class="figure-caption">
-        Figure 1. Overview of the EgoPi framework.
-      </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section id="video">
-      <h2>Video</h2>
-
-      <div class="video" style="margin-top:10px;">
-        <iframe
-          src="https://www.youtube.com/embed/GICOzWFJBj4"
-          title="EgoPi intro video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="hint">
-        EgoPi intro video.
+      <div class="typewrap">
+        <span id="type-target"></span><span class="cursor">▮</span>
       </div>
     </section>
 
@@ -269,7 +161,23 @@
   </div>
 
   <script>
+    // year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // typewriter
+    const text = "More coming soon...";
+    const target = document.getElementById("type-target");
+    let i = 0;
+
+    function tick() {
+      if (i <= text.length) {
+        target.textContent = text.slice(0, i);
+        i += 1;
+        setTimeout(tick, 60);
+      }
+      // done: cursor keeps blinking at end
+    }
+    tick();
   </script>
 </body>
 </html>
