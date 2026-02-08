@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EgoPi Project</title>
+  <meta name="description" content="EgoPi project website. Intro + video." />
+
+  <!-- Serif font for project name -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       Theme (Day / Night)
+       Auto follow system
+       ========================= */
+    :root {
+      --bg-color: #f5f1e8;
+      --text-color: #2b2b2b;
+      --accent-color: #3a6f5c;
+      --border-color: #d6d1c4;
+
+      --card-bg: #fdfcf9;
+      --muted-text: #6b6b6b;
+
+      --base-font-size: 0.95rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0f1415;
+        --text-color: #e6edf3;
+        --accent-color: #6fb1ff;
+        --border-color: #ffffff;
+
+        --card-bg: #0b1014;
+        --muted-text: rgba(230, 237, 243, 0.7);
+      }
+    }
+
+
+    /* =========================
+       Base Layout
+       ========================= */
+    body {
+      margin: 0;
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Consolas,
+        "Liberation Mono", monospace;
+      font-size: var(--base-font-size);
+      color: var(--text-color);
+      background: var(--bg-color);
+      line-height: 1.65;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    /* =========================
+       Project Name (Serif, NOT bold)
+       ========================= */
+    .home-name { 
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.9rem; 
+      line-height: 1.05; 
+      margin: 0 0 1rem 0; 
+    }
+
+    .subtitle {
+      color: var(--muted-text);
+      margin: 0;
+    }
+
+    .meta {
+      color: var(--muted-text);
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+
+    /* =========================
+       Sections (square, retro)
+       ========================= */
+    section {
+      margin-top: 22px;
+      padding: 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+    }
+
+    section h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+
+    section h2::before {
+      content: "> ";
+      color: var(--accent-color);
+    }
+
+    .intro {
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    .hint {
+      color: var(--muted-text);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    /* =========================
+       Framework figure
+       ========================= */
+    .figure {
+      margin: 14px 0;
+      border: 1px solid var(--border-color);
+      background: transparent;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .figure-caption {
+      font-size: 12px;
+      color: var(--muted-text);
+      margin-top: 6px;
+    }
+
+    /* =========================
+       Video
+       ========================= */
+    .video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 1px solid var(--border-color);
+    }
+
+    iframe,
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* =========================
+       Footer
+       ========================= */
+    footer {
+      margin-top: 20px;
+      color: var(--muted-text);
+      font-size: 12px;
+    }
+
+    footer::before {
+      content: "----------------------------------------";
+      display: block;
+      margin-bottom: 10px;
+      color: var(--border-color);
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* underline only for resource links */
+    .code-link {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+
+    @media (max-width: 640px) {
+      .home-name {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="home-name">Ego-Pi: VLA Fine-Tuning for Ego-Centric Human and Robot Data</h1>
+
+      <p class="meta">
+        Ji Woong (Brian) Kim*, <strong>Ke Wang*</strong>, Sirui Chen, Zipeng Fu, Cong Gao, Jeff Lai, Chelsea Finn (* Equal contribution)
+      </p>
+
+      <p>
+
+        <a class="code-link"
+           href=""
+           target="_blank"
+           rel="noopener noreferrer">
+          paper</a>
+        &nbsp;
+        <a class="code-link"
+           href=""
+           target="_blank"
+           rel="noopener noreferrer">
+          website</a>
+        &nbsp;
+        <a class="code-link"
+           href=""
+           target="_blank"
+           rel="noopener noreferrer">
+          code</a>
+      </p>
+    </header>
+
+    <!-- INTRO -->
+    <section id="intro">
+      <h2>Intro</h2>
+
+      <p class="intro"> Robotic manipulation is fundamentally limited by data scarcity. We leverage egocentric human data to improve learning for humanoid robots with dexterous hands, bridging the embodiment gap through visual guiding keypoints and a shared action representation. Our approach enables better generalization and the acquisition of new skills without additional robot data.</p>
+
+      <div class="figure">
+        <img src="assets/framework.png" alt="EgoPi framework">
+      </div>
+      <div class="figure-caption">
+        Figure 1. Overview of the EgoPi framework.
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section id="video">
+      <h2>Video</h2>
+
+      <div class="video" style="margin-top:10px;">
+        <iframe
+          src="https://www.youtube.com/embed/GICOzWFJBj4"
+          title="EgoPi intro video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="hint">
+        EgoPi intro video.
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Ke Wang
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
